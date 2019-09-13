@@ -14,6 +14,17 @@ app = Flask(__name__)
 def cuantas_letras(nombre):
     return str(len(nombre))
 
+@app.route('/suma/<numero>')
+def suma(numero):
+    if 'suma' not in session:
+        session['suma'] = 0
+        
+    suma = session['suma']
+    suma = suma + int(numero)
+    session['suma'] = suma
+    return str(suma)
+
+
 if _name_ == '_main_':
     app.run()
 
